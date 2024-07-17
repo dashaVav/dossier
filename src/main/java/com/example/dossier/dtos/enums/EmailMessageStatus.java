@@ -1,4 +1,4 @@
-package com.example.dossier.dtos;
+package com.example.dossier.dtos.enums;
 
 public enum EmailMessageStatus {
     FINISH_REGISTRATION,
