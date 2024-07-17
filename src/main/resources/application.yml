@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: dossier
+  mail:
+    host: smtp.rambler.ru
+    username: credit_conveyor@rambler.ru
+    password: aTf-VUp-yi4-5JS
+    port: 465
+    protocol: smtps
+  kafka:
+    bootstrap-servers: localhost:29091
+    trusted-packages: "*"
+    topic:
+      finish-registration: finish-registration
+      create-documents: create-documents
+      send-documents: send-documents
+      send-ses: send-ses
+      credit-issued: credit-issued
+      application-denied: application-denied
+      dlq-topic: dql-topic
+    group-id:
+      finish-registration: finish-registration
+      create-documents: create-documents
+      send-documents: send-documents
+      send-ses: send-ses
+      credit-issued: credit-issued
+      application-denied: application-denied
+
+
+server:
+  port: 8094
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
