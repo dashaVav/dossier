@@ -37,7 +37,6 @@ public class KafkaConsumersImpl implements KafkaConsumers {
         try {
             dossierService.sendDocuments(emailMessage);
         } catch (Exception e) {
-            System.out.println(e);
             dlqProducer.send(emailMessage);
         }
     }

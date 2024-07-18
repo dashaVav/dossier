@@ -1,4 +1,4 @@
-package com.example.dossier.service.client;
+package com.example.dossier.configuration.client;
 
 import feign.Retryer;
 import org.springframework.beans.factory.annotation.Value;

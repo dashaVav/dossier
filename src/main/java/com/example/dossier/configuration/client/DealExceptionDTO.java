@@ -1,4 +1,4 @@
-package com.example.dossier.service.client;
+package com.example.dossier.configuration.client;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

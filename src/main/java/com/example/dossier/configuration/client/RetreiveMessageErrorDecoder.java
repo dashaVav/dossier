@@ -1,4 +1,4 @@
-package com.example.dossier.service.client;
+package com.example.dossier.configuration.client;
 
 import com.example.dossier.exception.DealException;
 import com.fasterxml.jackson.databind.ObjectMapper;
