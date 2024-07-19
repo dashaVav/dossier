@@ -15,6 +15,6 @@ public class ApplicationDTO {
     private Long applicationId;
     private LocalDateTime creationDate;
     private LoanOfferDTO appliedOffer;
-    private ClientDTO clientDTO;
-    private CreditDto creditDto;
+    private ClientDTO client;
+    private CreditDto credit;
 }
