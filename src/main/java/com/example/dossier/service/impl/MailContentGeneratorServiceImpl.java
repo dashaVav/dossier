@@ -56,8 +56,7 @@ public class MailContentGeneratorServiceImpl implements MailContentGeneratorServ
     }
 
     private MailContent readContentForMail(String path, Long applicationId) throws IOException {
-        File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + path);
-        JSONObject dataForLoan = new JSONObject(new String(Files.readAllBytes(file.toPath())));
+        JSONObject dataForLoan = readFile(path);
 
         MailContent mailContent = new MailContent();
         return mailContent
@@ -66,12 +65,16 @@ public class MailContentGeneratorServiceImpl implements MailContentGeneratorServ
     }
 
     private MailContent readContentForMail(String path, Long applicationId, String sesCode) throws IOException {
-        File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + path);
-        JSONObject dataForLoan = new JSONObject(new String(Files.readAllBytes(file.toPath())));
+        JSONObject dataForLoan = readFile(path);
 
         MailContent mailContent = new MailContent();
         return mailContent
                 .setSubject(dataForLoan.getString("subject"))
                 .setText(String.format(dataForLoan.getString("text"), applicationId, sesCode));
+    }
+
+    private JSONObject readFile(String path) throws IOException {
+        File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + path);
+        return new JSONObject(new String(Files.readAllBytes(file.toPath())));
     }
 }

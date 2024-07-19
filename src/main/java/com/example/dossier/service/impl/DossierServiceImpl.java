@@ -37,10 +37,11 @@ public class DossierServiceImpl implements DossierService {
     @Override
     public void sendDocuments(EmailMessage emailMessage) throws MessagingException, IOException {
         ApplicationDTO applicationDTO = dealClient.getApplication(emailMessage.getApplicationId());
-        dealClient.updateApplicationStatus(emailMessage.getApplicationId());
-
         MailContent mailContent = mailContentGeneratorService
                 .readContentForSendDocuments(emailMessage.getApplicationId(), applicationDTO);
+
+        dealClient.updateApplicationStatus(emailMessage.getApplicationId());
+
         mailSender.send(emailMessage.getAddress(), mailContent.getSubject(), mailContent.getText(), "doc.txt", mailContent.getFile());
     }
 
