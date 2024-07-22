@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: dossier
+  mail:
+    host: smtp.rambler.ru
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    port: 465
+    protocol: smtps
+  kafka:
+    bootstrap-servers: localhost:29091
+    trusted-packages: "*"
+    topic:
+      finish-registration: finish-registration
+      create-documents: create-documents
+      send-documents: send-documents
+      send-ses: send-ses
+      credit-issued: credit-issued
+      application-denied: application-denied
+      dlq-topic: dql-topic
+    group-id:
+      finish-registration: finish-registration
+      create-documents: create-documents
+      send-documents: send-documents
+      send-ses: send-ses
+      credit-issued: credit-issued
+      application-denied: application-denied
+
+feign-client:
+  deal-client:
+    base-url: http://localhost:8092
+    get-application-path: /deal/admin/application/{applicationId}
+    update-application-status-path: /deal/admin/application/{applicationId}/status
+    get-ses-code-path: /deal/admin/application/{applicationId}/code
+    retryer:
+      period: 100
+      max-period: 10000
+      max-attempts: 2
+
+server:
+  port: 8094
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
