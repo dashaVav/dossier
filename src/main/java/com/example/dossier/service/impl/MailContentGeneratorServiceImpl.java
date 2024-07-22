@@ -67,8 +67,7 @@ public class MailContentGeneratorServiceImpl implements MailContentGeneratorServ
     private MailContent readContentForMail(String path, Long applicationId, String sesCode) throws IOException {
         JSONObject dataForLoan = readFile(path);
 
-        MailContent mailContent = new MailContent();
-        return mailContent
+        return new MailContent()
                 .setSubject(dataForLoan.getString("subject"))
                 .setText(String.format(dataForLoan.getString("text"), applicationId, sesCode));
     }

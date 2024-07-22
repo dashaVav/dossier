@@ -3,17 +3,14 @@ package com.example.dossier.dto;
 import com.example.dossier.dto.enums.Gender;
 import com.example.dossier.dto.enums.MaritalStatus;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
 public class ClientDTO {
     private Long clientId;
     private String lastName;
