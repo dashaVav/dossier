@@ -3,8 +3,8 @@ spring:
     name: dossier
   mail:
     host: smtp.rambler.ru
-    username: credit_conveyor@rambler.ru
-    password: aTf-VUp-yi4-5JS
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     port: 465
     protocol: smtps
   kafka:
