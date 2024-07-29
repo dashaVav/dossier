@@ -23,6 +23,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ConnectException.class)
     public ResponseEntity<DossierException> handleConnectException(ConnectException e) {
-        return handleTheException(new RuntimeException("Connection refused."), HttpStatus.SERVICE_UNAVAILABLE);
+        return handleTheException(new RuntimeException("Service Unavailable"), HttpStatus.SERVICE_UNAVAILABLE);
     }
 }
