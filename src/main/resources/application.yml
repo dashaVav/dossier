@@ -8,7 +8,7 @@ spring:
     port: 465
     protocol: smtps
   kafka:
-    bootstrap-servers: localhost:29091
+    bootstrap-servers: kafka:29091
     trusted-packages: "*"
     topic:
       finish-registration: finish-registration
