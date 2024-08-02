@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Service
 @RequiredArgsConstructor
 public class KafkaConsumersImpl implements KafkaConsumers {
@@ -19,6 +22,8 @@ public class KafkaConsumersImpl implements KafkaConsumers {
         try {
             dossierService.finishRegistration(emailMessage);
         } catch (Exception e) {
+            Logger logger = Logger.getLogger(this.getClass().getName());
+            logger.log(Level.INFO, e.getMessage());
             dlqProducer.send(emailMessage);
         }
     }
