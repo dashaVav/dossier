@@ -6,8 +6,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class DealException extends RuntimeException {
-    private String error;
-    private Integer status;
+    private final String error;
+    private final Integer status;
 
     public DealException(String error, Integer status) {
         super(error);

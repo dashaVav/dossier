@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class DossierException {
+public class DossierError {
     private String error;
     private Integer status;
 }

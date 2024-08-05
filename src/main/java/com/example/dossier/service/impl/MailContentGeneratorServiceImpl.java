@@ -9,12 +9,12 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.activation.DataSource;
 import jakarta.mail.util.ByteArrayDataSource;
 import org.json.JSONObject;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
+import org.springframework.util.FileCopyUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class MailContentGeneratorServiceImpl implements MailContentGeneratorService {
@@ -73,7 +73,8 @@ public class MailContentGeneratorServiceImpl implements MailContentGeneratorServ
     }
 
     private JSONObject readFile(String path) throws IOException {
-        File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + path);
-        return new JSONObject(new String(Files.readAllBytes(file.toPath())));
+        ClassPathResource classPathResource = new ClassPathResource(path);
+        byte[] fileAsBytes = FileCopyUtils.copyToByteArray(classPathResource.getInputStream());
+        return new JSONObject(new String(fileAsBytes, StandardCharsets.UTF_8));
     }
 }
