@@ -8,7 +8,7 @@ spring:
     port: 465
     protocol: smtps
   kafka:
-    bootstrap-servers: kafka:9091
+    bootstrap-servers: localhost:29091
     trusted-packages: "*"
     topic:
       finish-registration: finish-registration
@@ -28,7 +28,7 @@ spring:
 
 feign-client:
   deal-client:
-    base-url: http://deal:8092
+    base-url: http://localhost:8092
     get-application-path: /deal/admin/application/{applicationId}
     update-application-status-path: /deal/admin/application/{applicationId}/status
     get-ses-code-path: /deal/admin/application/{applicationId}/code
